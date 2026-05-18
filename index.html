@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="MVISTA-4D: View-Consistent 4D World Model with Test-Time Action Inference for Robotic Manipulation">
+  <meta name="keywords" content="MVISTA-4D, World Model, 4D Generation, Robotic Manipulation, Computer Vision, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MVISTA-4D: View-Consistent 4D World Model with Test-Time Action Inference for Robotic Manipulation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- TODO: Add your own Google Analytics here -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item has-text-weight-semibold" href="#">
+      <span class="icon"><i class="fas fa-cube"></i></span>
+      &nbsp;MVISTA-4D
+    </a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-end">
+      <span class="navbar-item navbar-icml-badge" aria-label="ICML 2026">
+        <img src="./static/images/icml-navbar-logo.svg" alt="ICML 2026">
+        <span>ICML&nbsp;2026</span>
+      </span>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero hero-with-video">
+  <video class="hero-bg-video" autoplay muted loop playsinline>
+    <source src="./video/title.mp4" type="video/mp4">
+  </video>
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+        <div class="hero-content-card">
+          <p class="venue-badge venue-badge-icml">
+            <img class="venue-badge-logo" src="./static/images/icml-navbar-logo.svg" alt="ICML">
+            <span>Accepted to <strong>ICML&nbsp;2026</strong></span>
+          </p>
+          <h1 class="title is-1 publication-title">MVISTA-4D: View-Consistent 4D World Model with Test-Time Action Inference for Robotic Manipulation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=DjQT_G0AAAAJ&hl=zh-CN">Jiaxu Wang</a><sup>1,*</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/EthenJ">Yicheng Jiang</a><sup>2,*</sup>,</span>
+            <span class="author-block">
+              <a>Tianlun He</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=tFi_8e4AAAAJ&hl=zh-CN">Jingkai Sun</a><sup>3</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/jonyzhang2023">Qiang Zhang</a><sup>4</sup>,</span>
+            <span class="author-block">
+              <a>Junhao He</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a>Jiahang Cao</a><sup>3</sup>,</span>
+            <span class="author-block">
+              <a>Zesen Gan</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://myuansun.github.io/">Mingyuan Sun</a><sup>5</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&hl=zh-CN&user=i4v4ng4AAAAJ">Qiming Shao</a><sup>2,&dagger;</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=-xQ-C1sAAAAJ&hl=en">Xiangyu Yue</a><sup>1,&dagger;</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>MMLab, CUHK,</span>
+            <span class="author-block"><sup>2</sup>HKUST,</span>
+            <span class="author-block"><sup>3</sup>HKU,</span>
+            <span class="author-block"><sup>4</sup>X-Humanoid Robots,</span>
+            <span class="author-block"><sup>5</sup>Tsinghua University</span>
+          </div>
+
+          <div class="is-size-6 publication-authors" style="margin-top: 0.5rem;">
+            <span class="author-block"><sup>*</sup>Equal contribution</span>
+            <span class="author-block" style="margin-left: 1rem;"><sup>&dagger;</sup>Corresponding authors</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./icml2026.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-database"></i>
+                  </span>
+                  <span>Dataset</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="#abstract" class="hero-scroll-indicator" aria-label="Scroll to content">
+    <span class="hero-scroll-arrow"></span>
+  </a>
+</section>
+
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 section-heading">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            World-model-based imagine-then-act becomes a promising paradigm for robotic manipulation,
+            yet existing approaches typically support either purely image-based forecasting or reasoning
+            over partial 3D geometry, limiting their ability to predict complete 4D scene dynamics.
+          </p>
+          <p>
+            This work proposes a novel embodied 4D world model that enables geometrically consistent,
+            arbitrary-view RGBD generation: given only a single-view RGBD observation as input,
+            the model "imagines" the remaining viewpoints, which can then be back-projected and
+            fused to assemble a more complete 3D structure across time.
+          </p>
+          <p>
+            To efficiently learn the multi-view, cross-modality generation, we explicitly design
+            cross-view and cross-modality feature fusion that jointly encourage consistency between
+            RGB and depth and enforce geometric alignment across views. Beyond prediction, converting
+            generated futures into actions is often handled by inverse dynamics, which is ill-posed
+            because multiple actions can explain the same transition. We address this with a
+            test-time action optimization strategy that backpropagates through the generative model
+            to infer a trajectory-level latent best matching the predicted future, and a residual
+            inverse dynamics model that turns this trajectory prior into accurate executable actions.
+          </p>
+          <p>
+            Experiments on three datasets demonstrate strong performance on both 4D scene generation
+            and downstream manipulation, and ablations provide practical insights into the key
+            design choices.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Method Overview Figure -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3 section-heading">Method Overview</h2>
+        <div class="content">
+          <img class="figure-card" src="./image/icml2026_overview.png" alt="Method Overview" style="width: 100%; height: auto;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo Videos -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3 section-heading">Experimental Results</h2>
+        <p class="subtitle is-5">Qualitative comparisons on RoboTwin, RLBench, and Real-World datasets</p>
+      </div>
+    </div>
+
+    <!-- RoboTwin Results -->
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content has-text-centered">
+          <h3 class="title is-4">RoboTwin</h3>
+          <p class="has-text-justified" style="max-width: 800px; margin: 0 auto 20px auto;">
+            Our method achieves the best performance on a majority of tasks and shows particularly strong gains on contact-rich, long-horizon interactions. We obtain the highest success rates on Adjust Bottle (69), Beat Hammer (42), Click Bell (38), Grab Roller (68), Lift Pot (42), and Place Container (72).
+          </p>
+          <img class="figure-card" src="./image/RoboTwin.png" alt="RoboTwin Per-Task Results" style="width: 100%; max-width: 612px; height: auto; display: block; margin: 0 auto;">
+          <video class="video-card" autoplay muted loop playsinline controls style="width: 100%; max-width: 540px; height: auto; margin-top: 20px;">
+            <source src="./video/RoboTwin.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- RLBench Results -->
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content has-text-centered">
+          <h3 class="title is-4">RLBench</h3>
+          <p class="has-text-justified" style="max-width: 800px; margin: 0 auto 20px auto;">
+            Our method consistently delivers the strongest performance across a broad range of task types. It achieves clear gains on relatively coarse, long-horizon interactions such as Close Drawer and Close Microwave (91 and 75), and remains highly robust in cluttered or occluded settings such as Open Drawer (98).
+          </p>
+          <img class="figure-card" src="./image/RLbench.png" alt="RLBench Per-Task Results" style="width: 100%; max-width: 612px; height: auto; display: block; margin: 0 auto;">
+          <video class="video-card" autoplay muted loop playsinline controls style="width: 100%; max-width: 540px; height: auto; margin-top: 20px;">
+            <source src="./video/RLbench.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Real-World Video -->
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content has-text-centered">
+          <h3 class="title is-4">Real-World</h3>
+          <video class="video-card" autoplay muted loop playsinline controls style="width: 100%; max-width: 540px; height: auto;">
+            <source src="./video/Realworld.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task Overview -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3 section-heading">Tasks</h2>
+        <p class="subtitle is-5">14 manipulation tasks collected in our real-world dataset</p>
+        <div class="content">
+          <img class="figure-card" src="./image/task4x4.png" alt="Task Overview" style="width: 100%; max-width: 612px; height: auto; display: block; margin: 0 auto;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <h2 class="title section-heading">BibTeX</h2>
+    <pre><code>@article{wang2026mvista,
+  title={MVISTA-4D: View-Consistent 4D World Model with Test-Time Action Inference for Robotic Manipulation},
+  author={Wang, Jiaxu and Jiang, Yicheng and He, Tianlun and Sun, Jingkai and Zhang, Qiang and He, Junhao and Cao, Jiahang and Gan, Zesen and Sun, Mingyuan and Shao, Qiming and others},
+  journal={arXiv preprint arXiv:2602.09878},
+  year={2026}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="./icml2026.pdf" aria-label="Paper PDF">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com" aria-label="GitHub repository">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+            Template adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
